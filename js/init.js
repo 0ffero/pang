@@ -101,7 +101,7 @@ function preload() {
     this.load.image(     'gameBorder_h', 'gameBorder_h.png'  );
     this.load.image(     'gameBorder_v', 'gameBorder_v.png'  );
     if (window.location.hostname=='0ffero.github.io') {
-        this.load.spritesheet(     'levels', 'backgroundsAImegaScaleForGitHub.png', { frameWidth: 768, frameHeight: 416 });
+        this.load.spritesheet(     'levels', 'backgroundsAImegaScaleForGithub.png', { frameWidth: 768, frameHeight: 416 });
         bgScale = 1700/768;
     } else {
         this.load.spritesheet(     'levels', 'backgroundsAImegaScale.png', { frameWidth: 1536, frameHeight: 832 });
