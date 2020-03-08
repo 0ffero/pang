@@ -14,6 +14,7 @@ vars = {
     font: {},
     game: {
         levelCurrent:     0,
+        levelBG:          0,
         inputEnabled:  true,
         playerCount:      1,
         players:         [],
@@ -115,7 +116,6 @@ function preload() {
     this.load.spritesheet( 'winScreens', 'winScreens.png',             { frameWidth: 1012, frameHeight: 480 });
 
     game.canvas.id = 'Pang!';
-    //game.stage.backgroundColor = "#4488AA";
 }
 
 function initialise() {
@@ -134,10 +134,10 @@ function initialise() {
     drawGameBorders();
 
     // BACKGROUND
-    levelBG = this.add.image(850,460, 'levels');
+    levelBG = this.add.image(850, 460, 'levels', 0);
     levelBG.setScale(bgScale);
     levelBG.visible = true;
-    winBG = this.add.image(850,460, 'winScreens', 0);
+    winBG = this.add.image(850, 460, 'winScreens', 0);
     winBG.visible = false;
 
     // COLLISION

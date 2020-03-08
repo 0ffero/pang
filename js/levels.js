@@ -28,6 +28,11 @@ levels = {
     },
 }
 
+function getNextLevelBG() {
+    if (vars.game.levelBG<49) { vars.game.levelBG++; } else { vars.game.levelBG=0; }
+    levelBG.setFrame(vars.game.levelBG);
+}
+
 function checkForLevelCompletion() {
     if (vars.game.levelBubbles.length===0) {
         if (vars.DEBUG===true) { console.log('Well Done!'); }
@@ -62,7 +67,7 @@ function spawnBubble(_size, _count, _spawnPositions, _colour) {
         for (let i=0; i<_count; i++) {
             let x=_spawnPositions[i][0];
             let y=_spawnPositions[i][1];
-            vars.game.levelBubbles.push(new bubble(x,y,_colour,_size));
+            vars.game.levelBubbles.push(new bubble(x,y,_colour,_size,300,0));
         }
     }
 }

@@ -1,5 +1,6 @@
 class bubble {
-    constructor(startX,startY, bubbleColour, bubbleSize=3) {
+    constructor(startX,startY, bubbleColour, bubbleSize=3, velocityX=300, velocityY=0) {
+        this.velocityX = velocityX; this.velocityY = velocityY;
         this.x = startX; this.y = startY;
         this.id = generateRandomID();
         this.bubbleSize = parseInt(bubbleSize.substr(-1));
@@ -34,7 +35,7 @@ class bubble {
         this.bubble = bubbles.create(this.x, this.y, 'bubble');
         this.bubble.name = this.id;
         this.bubble.setScale(this.scale);
-        this.bubble.setVelocity(300,0);
+        this.bubble.setVelocity(this.velocityX,this.velocityY);
         this.bubble.setAlpha(0.9);
         this.bubble.setBounce(1,1);
         this.bubble.setTint(this.bubbleColour);
@@ -80,6 +81,13 @@ class bubble {
                 break;
             }
             this.bubble.setScale(this.scale).update();
+            // there are a few ways to do what we need here. 1) destroy the current bubble and create 2 new ones or 2) just add 1 more bubble of the correct size and rescale the original bubble - We're doing the 2nd option
+            // generate the new smaller bubble
+            let spawnX = this.bubble.x; let spawnY = this.bubble.y;
+            let velocs = this.bubble.body.velocity;
+
+            vars.game.levelBubbles.push(new bubble(spawnX,spawnY,this.bubbleColour,'size' + this.bubbleSize, velocs.x*-1, velocs.y));
+
         } else {
             this.destroy();
         }
